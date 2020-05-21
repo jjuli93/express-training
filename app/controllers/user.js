@@ -21,6 +21,8 @@ const methodPost = async (req, res) => {
     return res.status(400).send('email already taken');
   }
 
+  // TODO: encrypt the password
+
   try {
     const newUser = await db.user.create(req.body);
     logger.info('new user created: ', newUser.email);

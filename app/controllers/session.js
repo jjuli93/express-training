@@ -17,7 +17,7 @@ const methodPost = async (req, res) => {
       return res.status(401).send('email or password is invalid');
     }
 
-    const jwtPayload = { email: user.email };
+    const jwtPayload = { email: user.email, id: user.id };
     const token = jwt.encode(jwtPayload, secret);
     logger.info('New user has logged in: ', user.email);
 

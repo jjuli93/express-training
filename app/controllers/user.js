@@ -1,4 +1,4 @@
-const db = require('../models/index');
+const db = require('../models');
 const logger = require('../logger');
 
 const methodPost = async (req, res) => {
@@ -6,10 +6,6 @@ const methodPost = async (req, res) => {
 
   if (!email || !password || !name || !last_name) {
     return res.status(400).send('bad schema');
-  }
-
-  if (!email.includes('@wolox.com')) {
-    return res.status(400).send('email must be from wolox');
   }
 
   if (password.length < 8) {
@@ -33,4 +29,14 @@ const methodPost = async (req, res) => {
   }
 };
 
-module.exports = { methodPost };
+const methodGet = async (req, res) => {
+  try {
+    const users = await db.user.findAndCountAll({ where: {}, offset: 0, limit: 50 });
+    return res.json(users);
+  } catch (error) {
+    logger.error(error);
+    return res.status(500).end();
+  }
+};
+
+module.exports = { methodPost, methodGet };

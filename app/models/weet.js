@@ -2,7 +2,7 @@ const User = require('./user');
 
 module.exports = (sequelize, DataTypes) => {
   const Weet = sequelize.define(
-    'user',
+    'weet',
     {
       id: { type: DataTypes.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true },
       user_id: {

@@ -23,6 +23,7 @@ const methodPost = async (req, res) => {
 
 const methodGet = async (req, res) => {
   try {
+    // TODO: add pagination
     const weets = await db.weet.findAndCountAll({ where: {}, offset: 0, limit: 50 });
     return res.json(weets);
   } catch (error) {
@@ -32,3 +33,5 @@ const methodGet = async (req, res) => {
 };
 
 module.exports = { methodPost, methodGet };
+
+// TODO: add tests

@@ -17,3 +17,5 @@ exports.init = app => {
   app.get('/weets', [authentication], weetController.methodGet);
   app.post('/weets', [authentication], weetController.methodPost);
 };
+
+// TODO: add schema validation
